@@ -106,12 +106,30 @@ def train_and_plot_all(
     fig2.savefig(elbow_wcss_path, bbox_inches='tight')
     plt.close(fig2)
 
+    # Grafik 4: Silhouette Score vs K
+    from sklearn.metrics import silhouette_score
+    silhouette_scores = []
+    k_range = range(2, max_k+1)
+    for k in k_range:
+        kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+        labels = kmeans.fit_predict(X_scaled)
+        score = silhouette_score(X_scaled, labels)
+        silhouette_scores.append(score)
+    fig4 = plt.figure()
+    plt.plot(list(k_range), silhouette_scores, marker='o')
+    plt.xlabel('Jumlah Klaster (k)')
+    plt.ylabel('Silhouette Score')
+    plt.title('Metode Silhouette Score')
+    silhouette_path = os.path.join(static_path, 'silhouette_score_vs_k.png')
+    fig4.savefig(silhouette_path, bbox_inches='tight')
+    plt.close(fig4)
+
     # Clustering dengan K=k_cluster
     kmeans = KMeans(n_clusters=k_cluster, random_state=42, n_init=10)
     labels = kmeans.fit_predict(X_scaled)
     df['Cluster'] = labels
 
-    # Grafik 3: Scatter plot hasil clustering (Unit price vs Rating)
+    # Grafik 3: Scatter plot hasil clustering (Harga Satuan vs Rating)
     fig3 = plt.figure(figsize=(8,6))
     sns.scatterplot(x=df['Harga Satuan'], y=df['Rating'], hue=df['Cluster'], palette='Set1', s=60)
     plt.xlabel('Harga Satuan')

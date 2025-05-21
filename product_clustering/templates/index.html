@@ -147,15 +147,40 @@
                 <button class="btn btn-success px-4 shadow-sm" type="submit">Terapkan</button>
             </div>
         </form>
-        {% if elbow_plot and wcss_plot %}
+        {% if elbow_plot and wcss_plot and scatter_plot %}
         <div class="row mb-4">
-            <div class="col-md-6">
-                <h5>Grafik 1: Elbow (Inertia vs K)</h5>
-                <img src="data:image/png;base64,{{ elbow_plot }}" class="plot-img"/>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-2">
+                        <h5 class="fw-bold text-center">Grafik 1: Elbow (Inertia vs K)</h5>
+                        <img src="data:image/png;base64,{{ elbow_plot }}" class="plot-img"/>
+                        <a href="/download/elbow" class="btn btn-outline-primary btn-sm mt-2" download>
+                            <i class="bi bi-download"></i> Download
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                <h5>Grafik 2: Elbow (WCSS vs K)</h5>
-                <img src="data:image/png;base64,{{ wcss_plot }}" class="plot-img"/>
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-2">
+                        <h5 class="fw-bold text-center">Grafik 2: Elbow (WCSS vs K)</h5>
+                        <img src="data:image/png;base64,{{ wcss_plot }}" class="plot-img"/>
+                        <a href="/download/wcss" class="btn btn-outline-primary btn-sm mt-2" download>
+                            <i class="bi bi-download"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-2">
+                        <h5 class="fw-bold text-center">Grafik 3: Silhouette Score vs K</h5>
+                        <img src="data:image/png;base64,{{ silhouette_plot }}" class="plot-img" alt="Silhouette Score vs K"/>
+                        <a href="/download/silhouette" class="btn btn-outline-primary btn-sm mt-2" download>
+                            <i class="bi bi-download"></i> Download
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <form method="POST" class="mb-4">
@@ -174,8 +199,11 @@
         {% endif %}
         {% if scatter_plot %}
         <div class="mb-4">
-            <h5>Grafik 3: Scatter Plot Hasil Clustering (Unit price vs Rating)</h5>
-            <img src="data:image/png;base64,{{ scatter_plot }}" class="plot-img"/>
+            <h5>Grafik 4: Scatter Plot Hasil Clustering (Harga Satuan vs Rating)</h5>
+            <img src="data:image/png;base64,{{ scatter_plot }}" class="plot-img" alt="Scatter Plot Hasil Cluster"/>
+            <a href="/download/scatter" class="btn btn-outline-primary btn-sm mt-2" download>
+                <i class="bi bi-download"></i> Download
+            </a>
         </div>
         {% endif %}
         {% if table_html %}
