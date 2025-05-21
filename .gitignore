@@ -1,0 +1,31 @@
+# Ignore Python cache and logs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore virtual environments (just in case)
+venv/
+.env/
+ENV/
+.venv/
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore test and temp files
+*.bak
+*.tmp
+*.swp
+
+# Ignore large raw datasets (optional, uncomment if needed)
+# dataset/*.csv
+# product_clustering/dataset/*.csv
