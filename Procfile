@@ -1,1 +1,1 @@
-web: python -m flask run --host=0.0.0.0 --port=8000
+web: flask --app product_clustering.app run --host=0.0.0.0 --port=${PORT}
